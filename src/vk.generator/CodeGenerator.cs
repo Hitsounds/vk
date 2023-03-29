@@ -82,7 +82,7 @@ namespace Vk.Generator
                     {
                         foreach (CommandDefinition command in spec.Commands)
                         {
-                            cw.WriteLine($"{command.Name}_ptr = s_nativeLib.LoadFunctionPointer(\"{command.Name}\");");
+                            cw.WriteLine($"{command.Name}_ptr = LoadFunctionPointer(\"{command.Name}\");");
                         }
                     }
                 }
