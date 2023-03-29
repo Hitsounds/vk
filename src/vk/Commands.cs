@@ -30,33 +30,20 @@ namespace Vulkan
             {
                 return "vulkan-1.dll";
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
-                if (RuntimeInformation.OSDescription.Contains("Unix"))
-                {
-                    // Android
-                return "libvulkan.so";
-            }
-                else
-            {
-                // Desktop Linux
                 return "libvulkan.so.1";
             }
-            }
-#if NET5_0
-            else if (OperatingSystem.IsAndroid())
+            if (OperatingSystem.IsAndroid())
             {
                 return "libvulkan.so";
             }
-#endif
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 return "libvulkan.dylib";
             }
-            else
-            {
-                throw new PlatformNotSupportedException();
-            }
+            
+            throw new PlatformNotSupportedException();
         }
 
         private static Exception CreateMissingFunctionException()
